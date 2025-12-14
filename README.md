@@ -21,7 +21,7 @@ Fontdue is a browser-based typography preview tool that lets you see how fonts l
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/fontdue.git
+   git clone https://github.com/daveonkels/fontdue.git
    cd fontdue
    ```
 
