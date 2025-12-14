@@ -1,0 +1,23 @@
+<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="ambient-pattern" patternUnits="userSpaceOnUse" width="400" height="400">
+      <g fill-opacity="0.08">
+        <!-- Large flowing shape 1 (horizontally seamless) -->
+        <path fill="#D9AFA0" d="M -20,100 C 80,180, 180,20, 280,100 S 380,220, 420,100 V 0 H -20 Z" />
+        
+        <!-- Large flowing shape 2 (horizontally seamless) -->
+        <path fill="#C49A8A" d="M -20,300 C 80,380, 180,220, 280,300 S 380,420, 420,300 V 200 H -20 Z" />
+        
+        <!-- Smaller dripping shape, tiling top to bottom -->
+        <path fill="#AB8474" d="M 100, 380 C 80, 420, 140, 430, 120, 370 Z" />
+        <path fill="#AB8474" d="M 100, -20 C 80, 20, 140, 30, 120, -30 Z" />
+
+        <!-- Smaller dripping shape, tiling top to bottom -->
+        <path fill="#D9AFA0" d="M 300, 390 C 280, 440, 340, 450, 320, 380 Z" />
+        <path fill="#D9AFA0" d="M 300, -10 C 280, 40, 340, 50, 320, -20 Z" />
+      </g>
+    </pattern>
+  </defs>
+
+  <rect x="0" y="0" width="100%" height="100%" fill="url(#ambient-pattern)" />
+</svg>

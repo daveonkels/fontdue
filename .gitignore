@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+
+# IDE / Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Claude Code local settings
+.claude/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# User uploads (kept empty, users add their own fonts)
+assets/uploads/*
+!assets/uploads/.gitkeep
+
+# Local environment
+.env
+.env.local
+.env.*.local
+
+# Build artifacts (if any)
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*

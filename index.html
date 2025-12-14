@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fontdue</title>
+  <meta name="description" content="Fontdue — a delicious way to explore and compare typefaces">
+
+  <!-- Preconnect to font services -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <!-- UI Font (Inter) - Always loaded for consistent UI -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/controls.css">
+  <link rel="stylesheet" href="css/layouts.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <!-- Splash Screen -->
+  <div class="splash" id="splash">
+    <div class="splash__content">
+      <div class="splash__logo">
+        <img src="assets/logo-splash.svg" alt="Fontdue" class="splash__logo-img">
+      </div>
+      <h1 class="splash__title">Fontdue</h1>
+      <p class="splash__tagline">A delicious way to explore typefaces</p>
+      <div class="splash__loader">
+        <div class="splash__loader-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="app">
+    <!-- =========================================================================
+         HEADER
+         ========================================================================= -->
+    <header class="header">
+      <!-- Mobile hamburger menu -->
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+        <span class="hamburger__line"></span>
+      </button>
+
+      <div class="header__logo">
+        <img src="assets/logo.svg" alt="Fontdue" class="header__logo-icon" width="28" height="28">
+        <span>Fontdue</span>
+      </div>
+
+      <div class="current-font">
+        <span class="current-font__label">Current</span>
+        <span class="current-font__name">Inter</span>
+      </div>
+
+      <div class="header__actions">
+        <span style="font-size: var(--text-xs); color: var(--text-tertiary); margin-right: var(--space-2);">
+          <span data-layout-count>20</span> layouts
+        </span>
+
+        <button class="btn btn--secondary btn--sm" data-action="add-font">
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M5 12h14"/>
+          </svg>
+          Add Font
+        </button>
+
+        <!-- Theme Controls -->
+        <div class="theme-controls">
+          <!-- Mode Toggle (Light/Dark) -->
+          <button class="mode-toggle" data-action="toggle-mode" title="Toggle light/dark mode">
+            <!-- Sun icon (shown in dark mode) -->
+            <svg class="mode-toggle__icon mode-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"/>
+              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            </svg>
+            <!-- Moon icon (shown in light mode) -->
+            <svg class="mode-toggle__icon mode-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+            </svg>
+          </button>
+
+          <!-- Theme Picker -->
+          <div class="theme-picker" id="theme-picker">
+            <button class="theme-picker__trigger" data-action="toggle-theme-picker">
+              <span class="theme-picker__icon" data-theme-icon></span>
+              <span class="theme-picker__name" data-theme-name>Terracotta</span>
+              <svg class="theme-picker__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </button>
+            <div class="theme-picker__dropdown">
+              <div class="theme-picker__header">Color Theme</div>
+              <div class="theme-picker__list" data-theme-list>
+                <!-- Theme options populated by JavaScript -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="position: relative;">
+          <button class="btn btn--ghost btn--icon" data-action="toggle-settings" title="Settings">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/>
+            </svg>
+          </button>
+
+          <div class="settings-dropdown">
+            <div class="settings-dropdown__item" data-action="export-collection">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+              </svg>
+              Export Collection
+            </div>
+            <div class="settings-dropdown__item" data-action="import-collection">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+              </svg>
+              Import Collection
+            </div>
+            <div class="settings-dropdown__divider"></div>
+            <div class="settings-dropdown__item" data-action="reset-collection">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 12a9 9 0 109-9 9.75 9.75 0 00-6.74 2.74L3 8"/>
+                <path d="M3 3v5h5"/>
+              </svg>
+              Reset to Defaults
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- =========================================================================
+         SIDEBAR
+         ========================================================================= -->
+    <aside class="sidebar">
+      <div class="sidebar__search">
+        <div class="search-wrapper">
+          <svg class="search-wrapper__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="M21 21l-4.35-4.35"/>
+          </svg>
+          <input type="text" class="search-input" placeholder="Search fonts... (⌘K)">
+        </div>
+      </div>
+
+      <div class="sidebar__content">
+        <!-- Font list rendered by JavaScript -->
+      </div>
+
+      <div class="sidebar__footer">
+        <p style="font-size: var(--text-xs); color: var(--text-tertiary); text-align: center;">
+          Use <kbd class="kbd">↑</kbd> <kbd class="kbd">↓</kbd> to cycle fonts
+        </p>
+      </div>
+    </aside>
+
+    <!-- Mobile sidebar overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- =========================================================================
+         MAIN CANVAS
+         ========================================================================= -->
+    <main class="main">
+      <!-- Layouts rendered by JavaScript -->
+    </main>
+  </div>
+
+  <!-- =========================================================================
+       FONT BROWSER MODAL
+       ========================================================================= -->
+  <div class="modal-overlay" id="font-browser-modal">
+    <div class="modal modal--browser">
+      <header class="modal__header">
+        <h2 class="modal__title">Font Repository</h2>
+        <button class="modal__close" data-action="close-modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
+        </button>
+      </header>
+
+      <!-- Source Tabs -->
+      <div class="browser-tabs">
+        <button class="browser-tab browser-tab--active" data-source="google">Google Fonts</button>
+        <button class="browser-tab" data-source="bunny">Bunny Fonts</button>
+        <button class="browser-tab" data-source="fontshare">Fontshare</button>
+        <button class="browser-tab" data-source="manual">+ Manual</button>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="browser-toolbar">
+        <div class="search-wrapper search-wrapper--browser">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="M21 21l-4.35-4.35"/>
+          </svg>
+          <input type="text" class="form-input search-input" id="browser-search" placeholder="Search fonts...">
+        </div>
+        <select class="form-select" id="browser-category">
+          <option value="all">All Categories</option>
+          <option value="sans-serif">Sans Serif</option>
+          <option value="serif">Serif</option>
+          <option value="monospace">Monospace</option>
+          <option value="display">Display</option>
+          <option value="handwriting">Handwriting</option>
+        </select>
+        <button class="btn btn--secondary btn--sm" id="load-full-catalog">Load Full Catalog</button>
+      </div>
+
+      <!-- Font Grid -->
+      <div class="modal__body modal__body--browser">
+        <div class="font-grid" id="font-grid">
+          <!-- Font cards rendered by JS -->
+          <div class="font-grid__loading">
+            <div class="spinner"></div>
+            <p>Loading fonts...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="modal__footer modal__footer--browser">
+        <span class="browser-status" id="browser-status">Loading...</span>
+        <button class="btn btn--secondary" data-action="close-modal">Close</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MANUAL ADD FONT MODAL (CDN/Upload/Local)
+       ========================================================================= -->
+  <div class="modal-overlay" id="add-font-modal">
+    <div class="modal">
+      <header class="modal__header">
+        <h2 class="modal__title">Add Font</h2>
+        <button class="modal__close" data-action="close-modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
+        </button>
+      </header>
+
+      <form id="add-font-form">
+        <div class="modal__body">
+          <!-- Font Source Selection -->
+          <div class="form-group">
+            <label class="form-label">Source</label>
+            <div class="radio-group">
+              <label class="radio-item">
+                <input type="radio" name="font-source" value="google" class="radio-item__input" checked>
+                <div class="radio-item__content">
+                  <span class="radio-item__label">Google Fonts</span>
+                  <span class="radio-item__description">Free fonts from Google</span>
+                </div>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="font-source" value="fontshare" class="radio-item__input">
+                <div class="radio-item__content">
+                  <span class="radio-item__label">Fontshare</span>
+                  <span class="radio-item__description">Premium free fonts from ITF</span>
+                </div>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="font-source" value="cdn" class="radio-item__input">
+                <div class="radio-item__content">
+                  <span class="radio-item__label">CDN URL</span>
+                  <span class="radio-item__description">Any CSS stylesheet URL</span>
+                </div>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="font-source" value="local" class="radio-item__input">
+                <div class="radio-item__content">
+                  <span class="radio-item__label">Local System Font</span>
+                  <span class="radio-item__description">Fonts installed on your computer</span>
+                </div>
+              </label>
+              <label class="radio-item">
+                <input type="radio" name="font-source" value="upload" class="radio-item__input">
+                <div class="radio-item__content">
+                  <span class="radio-item__label">Upload File</span>
+                  <span class="radio-item__description">.woff2, .woff, .otf, .ttf</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Google Fonts Fields -->
+          <div data-source-fields="google">
+            <div class="form-group">
+              <label class="form-label" for="google-font-name">Font Name</label>
+              <input type="text" id="google-font-name" class="form-input" placeholder="e.g., Roboto, Open Sans, Poppins">
+              <span class="form-help">Enter the exact name from <a href="https://fonts.google.com" target="_blank">fonts.google.com</a></span>
+            </div>
+          </div>
+
+          <!-- Fontshare Fields -->
+          <div data-source-fields="fontshare" style="display: none;">
+            <div class="form-group">
+              <label class="form-label" for="fontshare-font-name">Font Name</label>
+              <input type="text" id="fontshare-font-name" class="form-input" placeholder="e.g., Satoshi, Cabinet Grotesk">
+              <span class="form-help">Enter the exact name from <a href="https://fontshare.com" target="_blank">fontshare.com</a></span>
+            </div>
+          </div>
+
+          <!-- CDN Fields -->
+          <div data-source-fields="cdn" style="display: none;">
+            <div class="form-group">
+              <label class="form-label" for="cdn-font-name">Display Name</label>
+              <input type="text" id="cdn-font-name" class="form-input" placeholder="e.g., My Custom Font">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cdn-font-family">CSS Font Family</label>
+              <input type="text" id="cdn-font-family" class="form-input" placeholder="e.g., MyCustomFont">
+              <span class="form-help">The font-family name used in the CSS</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cdn-font-url">Stylesheet URL</label>
+              <input type="url" id="cdn-font-url" class="form-input" placeholder="https://example.com/font.css">
+            </div>
+          </div>
+
+          <!-- Local Fonts Fields -->
+          <div data-source-fields="local" style="display: none;">
+            <div class="form-group">
+              <button type="button" class="btn btn--secondary btn--block" data-action="load-local-fonts">
+                Load Local Fonts
+              </button>
+              <span class="form-help">Requires browser permission. Works in Chrome/Edge only.</span>
+            </div>
+            <div class="local-fonts-list">
+              <div class="empty-state" style="padding: 2rem;">
+                <p class="empty-state__description">Click the button above to load your system fonts.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Upload Fields -->
+          <div data-source-fields="upload" style="display: none;">
+            <div class="upload-zone">
+              <input type="file" class="upload-zone__input" accept=".woff2,.woff,.otf,.ttf">
+              <svg class="upload-zone__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+              </svg>
+              <p class="upload-zone__text">
+                <strong>Click to upload</strong> or drag and drop
+              </p>
+              <p class="upload-zone__formats">.woff2, .woff, .otf, .ttf</p>
+            </div>
+          </div>
+        </div>
+
+        <footer class="modal__footer">
+          <button type="button" class="btn btn--secondary" data-action="close-modal">Cancel</button>
+          <button type="submit" class="btn btn--primary">Add Font</button>
+        </footer>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container"></div>
+
+  <!-- Main JavaScript -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
