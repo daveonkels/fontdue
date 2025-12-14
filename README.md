@@ -4,16 +4,19 @@ A delicious way to explore and compare typefaces.
 
 Fontdue is a browser-based typography preview tool that lets you see how fonts look across various real-world UI layouts. Browse fonts from Google Fonts, Bunny Fonts, and Fontshare, then preview them instantly in forms, cards, dashboards, and more.
 
-![Fontdue Screenshot](assets/logo-splash.svg)
+![Fontdue Screenshot](assets/screenshot.png)
 
 ## Features
 
 - **Font Browser** — Browse curated collections from Google Fonts, Bunny Fonts (GDPR-friendly), and Fontshare
 - **One-Click Add** — Add fonts to your collection with a single click
-- **20+ Layout Previews** — See fonts in realistic contexts: login forms, pricing cards, dashboards, articles, and more
+- **20 Layout Previews** — See fonts in realistic contexts: hero sections, pricing cards, dashboards, articles, and more
 - **Live Preview** — Instantly see how any font looks across all layouts
+- **Favorites** — Star your favorite fonts for quick access
+- **Export/Import** — Save and restore your font collection as JSON
 - **Keyboard Navigation** — Use arrow keys to quickly cycle through fonts
-- **Theme Support** — Multiple color themes with light/dark mode
+- **8 Color Themes** — Multiple color palettes with light/dark mode
+- **Mobile Responsive** — Fully responsive design with hamburger menu and fluid typography
 - **Local Storage** — Your font collection persists in your browser
 - **No Build Required** — Pure HTML, CSS, and vanilla JavaScript
 
@@ -107,6 +110,7 @@ fontdue/
 └── assets/
     ├── logo.svg        # App logo
     ├── favicon.svg     # Browser favicon
+    ├── screenshot.png  # App screenshot
     └── uploads/        # User-uploaded fonts (gitignored)
 ```
 
@@ -132,14 +136,14 @@ The Local Font Access feature (for system fonts) requires Chrome or Edge.
 
 Fontdue includes 8 color themes:
 
-- Terracotta (default)
-- Ocean
-- Forest
-- Lavender
-- Midnight
-- Sunrise
-- Slate
-- Ember
+- 🧱 Terracotta (default)
+- 🌊 Ocean Breeze
+- 🌅 Sunset Vibes
+- 🌲 Forest
+- 🌸 Cherry Blossom
+- 🌙 Midnight
+- 💜 Lavender
+- ⬛ Monochrome
 
 Each theme supports both light and dark modes.
 
