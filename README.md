@@ -4,7 +4,7 @@ A delicious way to explore and compare typefaces.
 
 Fontdue is a browser-based typography preview tool that lets you see how fonts look across various real-world UI layouts. Browse fonts from Google Fonts, Bunny Fonts, and Fontshare, then preview them instantly in forms, cards, dashboards, and more.
 
-![Fontdue Screenshot](assets/screenshot.png)
+![Fontdue Screenshot](public/assets/screenshot.png)
 
 ## Features
 
@@ -31,13 +31,13 @@ Fontdue is a browser-based typography preview tool that lets you see how fonts l
 2. Serve the files with any static server:
    ```bash
    # Using Python
-   python3 -m http.server 8000
+   python3 -m http.server 8000 --directory public
 
    # Using Node.js
-   npx serve
+   npx serve public
 
    # Using PHP
-   php -S localhost:8000
+   php -S localhost:8000 -t public
    ```
 
 3. Open `http://localhost:8000` in your browser
@@ -91,27 +91,30 @@ Click the **+ Manual** tab in the font browser to add:
 
 ```
 fontdue/
-├── index.html          # Main HTML file
-├── css/
-│   ├── base.css        # CSS variables, themes, reset
-│   ├── controls.css    # UI components, modals, sidebar
-│   └── layouts.css     # Preview layout styles
-├── js/
-│   ├── main.js         # App initialization
-│   ├── fontManager.js  # Font collection state
-│   ├── fontLoader.js   # Font loading utilities
-│   ├── fontCatalog.js  # Catalog management
-│   ├── fontBrowser.js  # Font browser modal
-│   ├── layoutEngine.js # Preview layout generation
-│   ├── themeManager.js # Theme/dark mode handling
-│   └── ui.js           # Sidebar and UI interactions
-├── data/
-│   └── catalogs/       # Curated font catalogs (JSON)
-└── assets/
-    ├── logo.svg        # App logo
-    ├── favicon.svg     # Browser favicon
-    ├── screenshot.png  # App screenshot
-    └── uploads/        # User-uploaded fonts (gitignored)
+├── public/                 # Web root
+│   ├── index.html          # Main HTML file
+│   ├── css/
+│   │   ├── base.css        # CSS variables, themes, reset
+│   │   ├── controls.css    # UI components, modals, sidebar
+│   │   └── layouts.css     # Preview layout styles
+│   ├── js/
+│   │   ├── main.js         # App initialization
+│   │   ├── fontManager.js  # Font collection state
+│   │   ├── fontLoader.js   # Font loading utilities
+│   │   ├── fontCatalog.js  # Catalog management
+│   │   ├── fontBrowser.js  # Font browser modal
+│   │   ├── layoutEngine.js # Preview layout generation
+│   │   ├── themeManager.js # Theme/dark mode handling
+│   │   └── ui.js           # Sidebar and UI interactions
+│   ├── data/
+│   │   └── catalogs/       # Curated font catalogs (JSON)
+│   └── assets/
+│       ├── logo.svg        # App logo
+│       ├── favicon.svg     # Browser favicon
+│       ├── screenshot.png  # App screenshot
+│       └── uploads/        # User-uploaded fonts (gitignored)
+├── README.md
+└── LICENSE
 ```
 
 ## Font Sources
