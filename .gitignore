@@ -27,6 +27,7 @@ assets/uploads/*
 # Build artifacts (if any)
 dist/
 build/
+.wrangler/
 
 # Logs
 *.log
